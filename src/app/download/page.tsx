@@ -1,4 +1,19 @@
+"use client";
+
+import { useEffect } from "react";
+
+const macDownloadUrl =
+  "https://github.com/ryanjordan11/commandhub/releases/download/v0.1.0/Command%20Hub-0.1.0-arm64.dmg";
+
 export default function DownloadPage() {
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      window.location.href = macDownloadUrl;
+    }, 400);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div
       className="min-h-screen"
@@ -21,7 +36,7 @@ export default function DownloadPage() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="https://github.com/ryanjordan11/commandhub/releases/download/v0.1.0/Command%20Hub-0.1.0-arm64.dmg"
+              href={macDownloadUrl}
               className="rounded-full bg-black px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white"
             >
               Download for macOS (Apple Silicon)
