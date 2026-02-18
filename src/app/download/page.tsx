@@ -20,9 +20,12 @@ export default function DownloadPage() {
             workflows in a single desktop app.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <button className="rounded-full bg-black px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white">
-              Download for macOS
-            </button>
+            <a
+              href="https://github.com/ryanjordan11/commandhub/releases/download/v0.1.0/Command%20Hub-0.1.0-arm64.dmg"
+              className="rounded-full bg-black px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white"
+            >
+              Download for macOS (Apple Silicon)
+            </a>
             <button className="rounded-full border border-black/15 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-black/70">
               Join the waitlist
             </button>
