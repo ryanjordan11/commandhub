@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { useMutation, useQuery, skip } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "convex/_generated/api";
+import { skipQuery } from "@/lib/convex";
 import { getUserId } from "@/lib/user";
 
 type EventItem = {
@@ -47,7 +48,7 @@ export default function CalendarPage() {
 
   const remoteEvents = useQuery(
     api.events.list,
-    userId ? { userId } : skip,
+    userId ? { userId } : skipQuery,
   );
   const addEventMutation = useMutation(api.events.add);
   const removeEventMutation = useMutation(api.events.remove);

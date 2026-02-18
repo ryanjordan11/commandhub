@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useQuery, skip } from "convex/react";
-import { api } from "../../convex/_generated/api";
-import { convexEnabled } from "@/lib/convex";
+import { useQuery } from "convex/react";
+import { api } from "convex/_generated/api";
+import { convexEnabled, skipQuery } from "@/lib/convex";
 
 export default function AdminPage() {
   const [ready, setReady] = useState(false);
@@ -15,7 +15,7 @@ export default function AdminPage() {
 
   const profiles = useQuery(
     api.profiles.list,
-    convexEnabled && ready ? {} : skip,
+    convexEnabled && ready ? {} : skipQuery,
   );
 
   return (

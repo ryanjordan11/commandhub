@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useAuthActions, useConvexAuth } from "@convex-dev/auth/react";
-import { useMutation, useQuery, skip } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { useAuthActions } from "@convex-dev/auth/react";
+import { useConvexAuth, useMutation, useQuery } from "convex/react";
+import { api } from "convex/_generated/api";
+import { skipQuery } from "@/lib/convex";
 import { getUserId } from "@/lib/user";
 
 type Profile = {
@@ -33,7 +34,7 @@ export default function AccountPage() {
 
   const remoteProfile = useQuery(
     api.profiles.get,
-    userId ? { userId } : skip,
+    userId ? { userId } : skipQuery,
   );
   const upsertProfile = useMutation(api.profiles.upsert);
 

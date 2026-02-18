@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { useMutation, useQuery, skip } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import {
   defaultSites,
   mergeDefaults,
@@ -11,8 +11,8 @@ import {
   type Site,
 } from "@/lib/sites";
 import { getUserId } from "@/lib/user";
-import { convexEnabled } from "@/lib/convex";
-import { api } from "../../convex/_generated/api";
+import { convexEnabled, skipQuery } from "@/lib/convex";
+import { api } from "convex/_generated/api";
 
 const themeKey = "commandhub.theme";
 
@@ -45,7 +45,7 @@ function SettingsContent() {
 
   const convexLinks = useQuery(
     api.links.list,
-    convexEnabled && userId ? { userId } : skip,
+    convexEnabled && userId ? { userId } : skipQuery,
   );
   const upsertLink = useMutation(api.links.upsert);
   const removeLink = useMutation(api.links.removeByUrl);

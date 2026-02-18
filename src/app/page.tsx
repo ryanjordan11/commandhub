@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useQuery, skip } from "convex/react";
+import { useQuery } from "convex/react";
 import { defaultSites, mergeDefaults, storageKey, type Site } from "@/lib/sites";
 import { getUserId } from "@/lib/user";
-import { convexEnabled } from "@/lib/convex";
-import { api } from "../../convex/_generated/api";
+import { convexEnabled, skipQuery } from "@/lib/convex";
+import { api } from "convex/_generated/api";
 
 const getFavicon = (url: string) => {
   try {
@@ -54,7 +54,7 @@ export default function Home() {
 
   const convexLinks = useQuery(
     api.links.list,
-    convexEnabled && userId ? { userId } : skip,
+    convexEnabled && userId ? { userId } : skipQuery,
   );
 
   useEffect(() => {
@@ -192,7 +192,7 @@ export default function Home() {
         <webview
           key={site.id}
           src={site.url}
-          allowpopups="true"
+          allowpopups={true}
           partition="persist:commandhub"
           className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${
             currentId === site.id

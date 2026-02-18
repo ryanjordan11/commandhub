@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { useMutation, useQuery, skip } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "convex/_generated/api";
+import { skipQuery } from "@/lib/convex";
 import { getUserId } from "@/lib/user";
 
 type Note = {
@@ -40,7 +41,7 @@ export default function LibraryPage() {
 
   const remoteNotes = useQuery(
     api.notes.list,
-    userId ? { userId } : skip,
+    userId ? { userId } : skipQuery,
   );
   const addNoteMutation = useMutation(api.notes.add);
   const updateNoteMutation = useMutation(api.notes.update);
