@@ -1,5 +1,5 @@
 const macDownloadUrl =
-  "https://github.com/ryanjordan11/commandhub/releases/download/v0.1.0/Command%20Hub-0.1.0-arm64.dmg";
+  "https://github.com/ryanjordan11/commandhub/releases/download/v0.1.0/Command.Hub-0.1.0-arm64.dmg";
 
 export default function DownloadPage() {
   return (
