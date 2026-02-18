@@ -1,19 +1,7 @@
-"use client";
-
-import { useEffect } from "react";
-
 const macDownloadUrl =
   "https://github.com/ryanjordan11/commandhub/releases/download/v0.1.0/Command%20Hub-0.1.0-arm64.dmg";
 
 export default function DownloadPage() {
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      window.location.href = macDownloadUrl;
-    }, 400);
-
-    return () => window.clearTimeout(timer);
-  }, []);
-
   return (
     <div
       className="min-h-screen"
